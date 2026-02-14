@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+
 
 import list.*;
 
@@ -58,6 +57,33 @@ public class ListTests {
 
         // Assert
         assertEquals(size + 1, doubleList.size());
+    }
+
+    @Test
+    public void testAddElement() {
+        // Arrange
+        LinkedList<String> strList = new LinkedList<>();
+
+        // Act
+        strList.add("A");
+
+        // Assert
+        assertEquals("[A] size = 1, head: null, tail: A", strList.toString());
+
+    }
+
+    @Test
+    public void testAddTwoElements() {
+        // Arrange
+        LinkedList<String> strList = new LinkedList<>();
+
+        // Act
+        strList.add("A");
+        strList.add("B");
+
+        // Assert
+        assertEquals("[A, B] size = 2, head: null, tail: B", strList.toString());
+
     }
 
 }
