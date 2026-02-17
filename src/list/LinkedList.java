@@ -70,7 +70,10 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
         Node<T> cur = head.next;
 
         while (cur != null) {
-            s += cur.data.toString() + ", ";
+            s += cur.data.toString();
+            if (cur.next != null) {
+                s += ", ";
+            }
             cur = cur.next;
         }
 
@@ -82,9 +85,19 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
     }
 
     @Override
-    public T get(int i) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'get'");
+    public T get(int index) {
+
+        if (index >= size) {
+            throw new IndexOutOfBoundsException("Index out of bounds.");
+        }
+
+        Node<T> cur = head;
+        for (int i = 0; i <= index; i++) {
+            if (cur.next != null) {
+                cur = cur.next;
+            }
+        }
+        return cur.data;
     }
 
 }

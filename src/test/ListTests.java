@@ -2,8 +2,12 @@
 package test;
 
 import org.junit.jupiter.api.Test;
+
+import jdk.jfr.Timestamp;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 
@@ -83,6 +87,38 @@ public class ListTests {
 
         // Assert
         assertEquals("[A, B] size = 2, head: null, tail: B", strList.toString());
+
+    }
+
+    @Test 
+    public void testGet() {
+        // Arrange
+        List<Boolean> boolList = new LinkedList<Boolean>();
+        boolList.add(true);
+        boolList.add(false);
+        
+        // Act
+        boolean result = boolList.get(1);
+
+        // Assert
+        assertEquals(false, result);
+    }
+
+    @Test 
+    public void testOutsideBounds() {
+        // Arrange
+        List<Boolean> blist = new LinkedList<>();
+        blist.add(true);
+        blist.add(true);
+        blist.add(true);
+
+        // Assert
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+
+            // Act
+            Boolean res = blist.get(10000);
+			
+		});
 
     }
 
