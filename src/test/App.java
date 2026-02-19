@@ -6,16 +6,16 @@ import list.*;
 public class App {
 
     private static class MyClass {
-        
+
     }
 
     public static void main(String[] args) {
 
         List<Integer> intList = new LinkedList<>();
 
-        intList.add(1);
-        intList.add(3);
-        intList.add(2);
+        intList.addLast(1);
+        intList.addLast(3);
+        intList.addLast(2);
 
 
         System.out.println("intList: " + intList);

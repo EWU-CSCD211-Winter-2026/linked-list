@@ -3,10 +3,10 @@ package test;
 
 import org.junit.jupiter.api.Test;
 
-import jdk.jfr.Timestamp;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
@@ -57,7 +57,7 @@ public class ListTests {
         int size = doubleList.size();
 
         // Act
-        doubleList.add(0.123);
+        doubleList.addLast(0.123);
 
         // Assert
         assertEquals(size + 1, doubleList.size());
@@ -69,7 +69,7 @@ public class ListTests {
         LinkedList<String> strList = new LinkedList<>();
 
         // Act
-        strList.add("A");
+        strList.addLast("A");
 
         // Assert
         assertEquals("[A] size = 1, head: null, tail: A", strList.toString());
@@ -82,8 +82,8 @@ public class ListTests {
         LinkedList<String> strList = new LinkedList<>();
 
         // Act
-        strList.add("A");
-        strList.add("B");
+        strList.addLast("A");
+        strList.addLast("B");
 
         // Assert
         assertEquals("[A, B] size = 2, head: null, tail: B", strList.toString());
@@ -94,8 +94,8 @@ public class ListTests {
     public void testGet() {
         // Arrange
         List<Boolean> boolList = new LinkedList<Boolean>();
-        boolList.add(true);
-        boolList.add(false);
+        boolList.addLast(true);
+        boolList.addLast(false);
         
         // Act
         boolean result = boolList.get(1);
@@ -108,18 +108,77 @@ public class ListTests {
     public void testOutsideBounds() {
         // Arrange
         List<Boolean> blist = new LinkedList<>();
-        blist.add(true);
-        blist.add(true);
-        blist.add(true);
+        blist.addLast(true);
+        blist.addLast(true);
+        blist.addLast(true);
+
+        // Act
+        Boolean res = blist.get(10000);
+
+        assertNull(res);
 
         // Assert
-        assertThrows(IndexOutOfBoundsException.class, () -> {
+        // assertThrows(IndexOutOfBoundsException.class, () -> {
+        //     // Act
+        //     Boolean res = blist.get(10000);
+		// });
 
-            // Act
-            Boolean res = blist.get(10000);
-			
-		});
+    }
 
+    @Test 
+    public void testOutOfBoundsReturnsNull() {
+        // Arrange
+        List<Integer> l = new LinkedList<>();
+
+        // Act
+        Integer res = l.get(-2000);
+
+        // Assert
+        assertNull(res);
+    }
+
+    @Test
+    public void testAddFirstToEmptyList() {
+        // Arrange
+        List<Double> list = new LinkedList<>();
+
+        // Act
+        list.addFirst(1.0);
+
+        // Assert
+        assertEquals("[1.0] size = 1, head: null, tail: 1.0", list.toString());
+    }
+
+    @Test
+    public void testAddFirstToNonEmptyList() {
+        // Arrange
+        List<Double> list = new LinkedList<>();
+        list.addLast(1.0);
+        list.addLast(1.1);
+
+        // Act
+        list.addFirst(0.9);
+
+
+        // Assert
+        assertEquals("[0.9, 1.0, 1.1] size = 3, head: null, tail: 1.1", list.toString());
+    }
+
+    @Test
+    public void testAddAtIndexToNonEmptyList() {
+        // Arrange
+        List<Integer> list = new LinkedList<>();
+        list.addLast(1);
+        list.addLast(2);
+        list.addLast(3);
+
+
+        // Act
+        list.addAtIndex(2, 4);
+
+
+        // Assert
+        assertEquals("[1, 2, 4, 3] size = 4, head: null, tail: 3", list.toString());
     }
 
 }
