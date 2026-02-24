@@ -181,4 +181,19 @@ public class ListTests {
         assertEquals("[1, 2, 4, 3] size = 4, head: null, tail: 3", list.toString());
     }
 
+    @Test
+    public void testAddAtIndex1() {
+        // Arrange
+        List<Integer> list = new LinkedList<>();
+        list.addLast(1);
+        list.addLast(2);
+        list.addLast(3);
+
+        // Act
+        list.addAtIndex(1, 4);
+
+        // Assert
+        assertEquals("[1, 4, 2, 3] size = 4, head: null, tail: 3", list.toString());
+    }
+
 }
