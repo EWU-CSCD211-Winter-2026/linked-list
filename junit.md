@@ -16,6 +16,15 @@
 }
 ```
 
+or
+```
+{
+  "java.project.referencedLibraries": [
+    "lib/junit-platform-console-standalone-6.0.0.jar"
+  ]
+}
+```
+
 
 ## To compile
 ```
