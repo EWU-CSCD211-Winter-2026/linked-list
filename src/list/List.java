@@ -9,6 +9,7 @@ public interface List<T> {
     void addFirst(T element);
     void addAtIndex(int index, T element);
     T get(int i);
+    int nodesAfter(T target);
 
 
 }

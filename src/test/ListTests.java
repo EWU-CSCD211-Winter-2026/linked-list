@@ -196,4 +196,28 @@ public class ListTests {
         assertEquals("[1, 4, 2, 3] size = 4, head: null, tail: 3", list.toString());
     }
 
+    @Test
+    public void testNodesAfter() {
+        // Arrange
+        List<String> list = new LinkedList<>();
+        list.addLast("A");
+        list.addLast("B");
+        list.addLast("C");
+        list.addLast("D");
+
+        // Act
+        int nodesAfterA = list.nodesAfter("A");
+        int nodesAfterB = list.nodesAfter("B");
+        int nodesAfterC = list.nodesAfter("C");
+        int nodesAfterD = list.nodesAfter("D");
+
+        // Assert
+        assertEquals(3, nodesAfterA);
+        assertEquals(2, nodesAfterB);
+        assertEquals(1, nodesAfterC);
+        assertEquals(0, nodesAfterD);
+    }
+
 }
+
+

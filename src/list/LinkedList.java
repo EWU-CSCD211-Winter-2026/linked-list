@@ -170,4 +170,34 @@ public class LinkedList<T> implements List<T> {
 
     }
 
+    @Override
+    public int nodesAfter(T target) {
+        return nodesAfter(head.next, target);
+    }
+    private int nodesAfter(Node<T> node, T target) {
+
+        // base case: not found
+        if (node == null) {
+            return -1;
+        }
+
+        // found target
+        if (node.data.equals(target)) {
+            return countNodes(node.next);
+        }
+
+        // recursive case
+        return nodesAfter(node.next, target);
+    }
+    private int countNodes(Node<T> node) {
+
+        // base case
+        if (node == null) {
+            return 0;
+        }
+
+        // recursive case
+        return 1 + countNodes(node.next);
+    }
+
 }
