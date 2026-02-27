@@ -1,7 +1,7 @@
 
 package list;
 
-public class LinkedList<T> implements List<T> {
+public class LinkedList<T extends Comparable<T>> implements List<T> {
 
     private static class Node<T> {
         public T data;
@@ -50,6 +50,7 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public void addLast(T element) {
+
         // step 1
         Node<T> newNode = new Node<>(element);
 
@@ -198,6 +199,29 @@ public class LinkedList<T> implements List<T> {
 
         // recursive case
         return 1 + countNodes(node.next);
+    }
+
+    public void printList() {
+        printList(head.next);
+    }
+    private void printList(Node<T> node) {
+
+        // System.out.println(node.data.toString());
+
+        // base case
+        if (node.next == null) {
+            // do nothing
+        }
+
+        // recursive case
+
+        else {
+            printList(node.next);
+        }
+
+        System.out.println(node.data.toString());
+
+
     }
 
 }

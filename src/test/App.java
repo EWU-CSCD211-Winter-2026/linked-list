@@ -14,11 +14,13 @@ public class App {
         List<Integer> intList = new LinkedList<>();
 
         intList.addLast(1);
-        intList.addLast(3);
         intList.addLast(2);
+        intList.addLast(3);
+
+        intList.printList();
 
 
-        System.out.println("intList: " + intList);
+        // System.out.println("intList: " + intList);
         
 
     }

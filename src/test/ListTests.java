@@ -9,9 +9,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import list.*;
+import model.*;
 
 public class ListTests {
 
@@ -118,10 +119,16 @@ public class ListTests {
         assertNull(res);
 
         // Assert
-        // assertThrows(IndexOutOfBoundsException.class, () -> {
-        //     // Act
-        //     Boolean res = blist.get(10000);
-		// });
+        assertThrows(
+            
+            IndexOutOfBoundsException.class, 
+            
+            () -> {
+                // Act
+                Boolean bres = blist.get(10000);
+            }
+    
+        );
 
     }
 
@@ -218,6 +225,29 @@ public class ListTests {
         assertEquals(0, nodesAfterD);
     }
 
+    @Test
+    public void testCompares() {
+
+        // Arrange
+        List<Person> people = new LinkedList<>();
+
+        people.addLast(new Person("Alice", 20));
+        people.addLast(new Person("Bob", 21));
+        people.addLast(new Person("Alice", 21));
+
+        // Act
+        int res1 = people.get(0).compareTo(people.get(1));
+        int res2 = people.get(0).compareTo(people.get(2));
+        
+
+        // Assert
+        assertTrue(people.get(0) instanceof Comparable);
+        assertTrue((res1 < 0));
+        assertTrue((res2 < 0));
+
+
+    }
+
+    
+
 }
-
-

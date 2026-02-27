@@ -1,7 +1,7 @@
 
 package list;
 
-public interface List<T> {
+public interface List<T extends Comparable<T>> {
 
     int size();
     boolean isEmpty();
@@ -10,6 +10,7 @@ public interface List<T> {
     void addAtIndex(int index, T element);
     T get(int i);
     int nodesAfter(T target);
+    void printList();
 
 
 }
