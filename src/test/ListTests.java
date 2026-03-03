@@ -3,6 +3,7 @@ package test;
 
 import org.junit.jupiter.api.Test;
 
+import jdk.jfr.Timestamp;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -114,9 +115,8 @@ public class ListTests {
         blist.addLast(true);
 
         // Act
-        Boolean res = blist.get(10000);
-
-        assertNull(res);
+        //Boolean res = blist.get(10000);
+        //assertNull(res);
 
         // Assert
         assertThrows(
@@ -248,6 +248,37 @@ public class ListTests {
 
     }
 
+    @Test
+    public void testSwapPairs() {
+
+        // Arrange
+        List<Integer> list = new LinkedList<>();
+        list.addLast(1);
+        list.addLast(2);
+        list.addLast(3);
+        list.addLast(4);
+        list.addLast(5);
+
+        List<String> list2 = new LinkedList<>();
+        list2.addLast("A");
+        list2.addLast("B");
+
+
+        List<Boolean> list3 = new LinkedList<>();
+        list3.addLast(true);
+        list3.addLast(false);
+        list3.addLast(true);
+
+        // Act
+        list.swapPairs();
+        list2.swapPairs();
+        list3.swapPairs();
+
+        // Assert
+        assertEquals("[2, 1, 4, 3, 5] size = 5, head: null, tail: 5", list.toString());
+        assertEquals("[B, A] size = 2, head: null, tail: A", list2.toString());
+        assertEquals("[false, true, true] size = 3, head: null, tail: true", list3.toString());
+    }
     
 
 }

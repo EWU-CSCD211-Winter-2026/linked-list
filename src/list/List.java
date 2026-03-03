@@ -11,6 +11,6 @@ public interface List<T extends Comparable<T>> {
     T get(int i);
     int nodesAfter(T target);
     void printList();
-
+    public void swapPairs();
 
 }

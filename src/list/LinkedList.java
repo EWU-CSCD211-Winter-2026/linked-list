@@ -65,6 +65,31 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
         
     }
 
+    public void swapPairs() {
+
+        if (size <= 1) {
+            return;
+        }
+
+        Node<T> cur = head;
+
+        while (cur.next != null && cur.next.next != null) {
+            Node<T> temp1 = cur.next;
+            Node<T> temp2 = cur.next.next;
+            cur.next = temp2;
+            temp1.next = temp2.next;
+            temp2.next = temp1;
+
+            if (temp2 == tail) {
+                tail = temp1;
+            }
+
+            cur = cur.next.next;
+        }
+        
+
+    }
+
     @Override
     public void addFirst(T element) {
         if (size == 0) {
@@ -111,9 +136,9 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
     public T get(int index) {
 
         if (index >= size) {
-            System.out.println("Index out of bounds");
-            return null;
-            // throw new IndexOutOfBoundsException("Index out of bounds.");
+            //System.out.println("Index out of bounds");
+            //return null;
+             throw new IndexOutOfBoundsException("Index out of bounds");
         }
         if (index < 0) {
             return null;
